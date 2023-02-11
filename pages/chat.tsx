@@ -1,15 +1,10 @@
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 
-import styles from '@/styles/Home.module.css';
+import styles from './chat.module.css';
 
-async function loadAIChat() {
-  const { AIChat } = await import('@/packages/assistant-ui-chat');
-  return AIChat;
-}
-
-const AsyncAIChat = dynamic(loadAIChat, {
-  loading: () => <>Loading...</>,
+const AsyncAIChat = dynamic(() => import('@/packages/assistant-ui-chat').then(def => def.AIChat), {
+  ssr: false,
 });
 
 export default function Home() {
