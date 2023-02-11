@@ -1,10 +1,29 @@
 import '@chatui/core/dist/index.css';
 // 引入组件
+import { useState } from 'react';
 import Chat, { Bubble, useMessages, ChatProps } from '@chatui/core';
 import { postMessage } from './services';
+import { PromptModal } from './prompt';
+import { AIChatContext, defaultAIChatContext, Prompt } from './hooks';
+import { chatgptConstants } from '../constants';
 
 export function AIChat() {
   const { messages, appendMsg, setTyping } = useMessages([]);
+  const [promptModalOpen, setPromptModalOpen] = useState(false);
+  const [context, setContext] = useState(defaultAIChatContext);
+  const [lastestMessageId, setLastestMessageId] = useState<string>();
+
+  const setCoversationId = (id?: string) =>
+    setContext({
+      ...context,
+      converstationId: id,
+    });
+
+  const setPrompt = (selectedPrompt: Prompt) =>
+    setContext({
+      ...context,
+      prompt: selectedPrompt,
+    });
 
   const handleSend: ChatProps['onSend'] = (type: string, val: string) => {
     if (type === 'text' && val.trim()) {
@@ -17,9 +36,13 @@ export function AIChat() {
       setTyping(true);
 
       postMessage(val, {
-        conversationId: '',
-        parentMessageId: '',
+        promptPrefix: context.prompt.prompt,
+        conversationId: context.converstationId,
+        parentMessageId: lastestMessageId,
       }).then(res => {
+        setCoversationId(res.conversationId);
+        setLastestMessageId(res.id);
+
         appendMsg({
           type: 'text',
           content: { text: res.text },
@@ -34,11 +57,21 @@ export function AIChat() {
   };
 
   return (
-    <Chat
-      navbar={{ title: '智能助理' }}
-      messages={messages}
-      renderMessageContent={renderMessageContent}
-      onSend={handleSend}
-    />
+    <AIChatContext.Provider value={context}>
+      <PromptModal
+        active={promptModalOpen}
+        onClose={() => setPromptModalOpen(false)}
+        onChangePrompt={setPrompt}
+      />
+      <Chat
+        navbar={{
+          title: context.prompt.act_zh,
+          rightContent: [{ icon: 'apps', onClick: () => setPromptModalOpen(true) }],
+        }}
+        messages={messages}
+        renderMessageContent={renderMessageContent}
+        onSend={handleSend}
+      />
+    </AIChatContext.Provider>
   );
 }

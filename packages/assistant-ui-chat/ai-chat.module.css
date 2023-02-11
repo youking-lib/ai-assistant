@@ -1,0 +1,8 @@
+.promptList {
+  height: calc(100vh - 20rem);
+  overflow: auto;
+}
+
+.promptListItemActive {
+  background-color: var(--gray-6);
+}
