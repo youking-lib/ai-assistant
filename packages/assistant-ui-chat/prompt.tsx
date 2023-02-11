@@ -38,6 +38,7 @@ export function PromptModal(
           color: 'primary',
         },
         {
+          onClick: props.onClose,
           label: '取消',
         },
       ]}

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "pm2": "pm2 start npm --name 'ai-assistant' -- start",
+    "pm2": "pm2 restart npm --name 'ai-assistant' -- start",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
