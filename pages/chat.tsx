@@ -5,6 +5,7 @@ import styles from './chat.module.css';
 
 const AsyncAIChat = dynamic(() => import('@/packages/assistant-ui-chat').then(def => def.AIChat), {
   ssr: false,
+  loading: () => <>loading...</>,
 });
 
 export default function Home() {

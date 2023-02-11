@@ -1,6 +1,7 @@
 import '@chatui/core/dist/index.css';
 // 引入组件
 import Chat, { Bubble, useMessages, ChatProps } from '@chatui/core';
+import { postMessage } from './services';
 
 export function AIChat() {
   const { messages, appendMsg, setTyping } = useMessages([]);
@@ -15,12 +16,15 @@ export function AIChat() {
 
       setTyping(true);
 
-      setTimeout(() => {
+      postMessage(val, {
+        conversationId: '',
+        parentMessageId: '',
+      }).then(res => {
         appendMsg({
           type: 'text',
-          content: { text: 'Bala bala' },
+          content: { text: res.text },
         });
-      }, 1000);
+      });
     }
   };
 
