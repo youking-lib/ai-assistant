@@ -15,6 +15,7 @@
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
     "chatgpt": "^4.2.0",
+    "classnames": "^2.3.2",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
     "isomorphic-fetch": "^3.0.0",
@@ -27,6 +28,8 @@
   },
   "devDependencies": {
     "@types/isomorphic-fetch": "^0.0.36",
-    "@types/lodash": "^4.14.191"
+    "@types/lodash": "^4.14.191",
+    "bing-translate-api": "^2.8.0",
+    "csvtojson": "^2.0.10"
   }
 }
