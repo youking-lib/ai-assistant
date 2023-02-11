@@ -25,6 +25,7 @@ export function PromptModal(
   };
 
   return (
+    // @ts-ignore
     <Modal
       active={props.active}
       title="变换角色"
@@ -42,6 +43,7 @@ export function PromptModal(
       ]}
     >
       <div className={styles.promptList}>
+        {/* @ts-ignore */}
         <List>
           {PROMPTS.map(item => {
             const isActive = selectedPrompt.id === item.id;
