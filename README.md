@@ -15,7 +15,7 @@ Thanks to the selfless contributions of these developers.
 - [ ] TODO: Supports login
 
 ![](./public/WX20230212-192111.png)
-![](./public/WX20230212-192112.png)
+![](./public/WX20230212-192222.png)
 
 ## Getting Started
 
