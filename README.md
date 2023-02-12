@@ -2,8 +2,17 @@ This project is developed based on other excellent projects on Github, including
 
 - [nextjs](https://github.com/vercel/next.js)
 - [chatgpt-api](https://github.com/transitive-bullshit/chatgpt-api)
+- [awesome-chatgpt-prompts](https://github.com/f/awesome-chatgpt-prompts)
 
 Thanks to the selfless contributions of these developers.
+
+## Features
+
+- Supports conversation
+- Supports switching of assistant role
+- Supports PC/Mobile devices
+- [ ] TODO: Persistent conversation
+- [ ] TODO: Supports login
 
 ## Getting Started
 
