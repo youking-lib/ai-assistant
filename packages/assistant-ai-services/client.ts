@@ -30,6 +30,8 @@ export async function sendMessage(question: string, options: SendMessageOptions)
   const client = await getAvailableClient();
 
   if (!client) {
+    forceSetClientClean();
+
     throw new Error('No available clients');
   }
 
@@ -37,11 +39,7 @@ export async function sendMessage(question: string, options: SendMessageOptions)
     const res = await client.client.sendMessage(question, options);
     return res;
   } catch (err) {
-    client.errorCount++;
-
-    if (client.errorCount > chatgptConstants.maxContinuousCount) {
-      client.status = 'invalid';
-    }
+    setClientDirty(client);
 
     throw err;
   }
@@ -82,4 +80,21 @@ export const getAvailableClient = async function () {
 
 function getClientsInfo() {
   return Array.from(CLIENTS.values());
+}
+
+function setClientDirty(client: ClientInfo) {
+  client.errorCount++;
+
+  if (client.errorCount > chatgptConstants.maxContinuousCount) {
+    client.status = 'invalid';
+  }
+}
+
+function forceSetClientClean() {
+  const clients = getClientsInfo();
+
+  clients.forEach(client => {
+    client.errorCount = 0;
+    client.status = 'running';
+  });
 }
