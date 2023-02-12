@@ -1,38 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This project is developed based on other excellent projects on Github, including but not limited to:
+
+- [nextjs](https://github.com/vercel/next.js)
+- [chatgpt-api](https://github.com/transitive-bullshit/chatgpt-api)
+
+Thanks to the selfless contributions of these developers.
 
 ## Getting Started
 
-First, run the development server:
+If you want to experience it directly, you can visit [ai-assistant demo](https://ai.gonote.io). (If you find that it is unable to answer, it might be because the key balance is insufficient, you can raise an issue)
+
+### Deploy with pm2
+
+prerequisites
+
+- nodejs
+- npm
+
+1. clone `ai-assistant`
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+git clone https://github.com/youking-lib/ai-assistant.git
+npm i -g pnpm pm2
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. add `.env` file
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+``` bash
+# SITE_GOOGLE_ANALYTICS=
+OPENAI_API_KEY=
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+3. deploy
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+sh deploy.sh
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Deploy with docker
 
-## Learn More
+```bash
+# TODO
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Local
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Same as `deploy with pm2`：
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Clone this project.
+- Add the .env file (or .env.local for development purposes, which will not be committed).
+- Run the following script: 
 
-## Deploy on Vercel
+```
+pnpm i
+pnpm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+The server has started and is now running on localhost at port 3000.
