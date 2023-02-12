@@ -27,7 +27,7 @@ async function run() {
     act: 'ChatGPT',
     act_zh: 'ChatGPT',
     id: 0,
-    prompt: '',
+    prompt: 'You are ChatGPT, a large language model trained by OpenAI.',
   });
 
   writeFile(outFilePath, JSON.stringify(res, null, 2));
