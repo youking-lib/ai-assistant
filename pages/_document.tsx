@@ -10,7 +10,11 @@ export default function Document() {
   const analytics = !__DEV__ && siteConstants.ga && (
     <>
       <script async src={siteConstants.ga}></script>
-      <script>{SCRIPT}</script>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: SCRIPT,
+        }}
+      ></script>
     </>
   );
 
