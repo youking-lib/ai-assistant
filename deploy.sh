@@ -6,4 +6,4 @@ pnpm i
 pnpm run build
 
 # start
-npm run pm2
+npx pm2 restart ./scripts/pm2.config.js --env production
