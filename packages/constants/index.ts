@@ -1,4 +1,5 @@
 import PROMPTS from '@/scripts/prompts.json';
+import path from 'path';
 
 export const __DEV__ = process.env.NODE_ENV === 'development';
 
@@ -24,6 +25,12 @@ export const chatgptConstants = {
 export const siteConstants = {
   ga: process.env.SITE_GOOGLE_ANALYTICS,
 };
+
+export const systemConstants = {
+  messageStorePath: path.resolve(__dirname, '../../message-store.json'),
+};
+
+console.log(systemConstants.messageStorePath);
 
 function getApiKeys() {
   const str = process.env.OPENAI_API_KEY || '';

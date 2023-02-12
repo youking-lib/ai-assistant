@@ -1,6 +1,14 @@
 import { memoize } from 'lodash';
-import { chatgptConstants } from '@assistant/constants';
+import Keyv from 'keyv';
+import KeyvFile from 'keyv-file';
+import { chatgptConstants, systemConstants } from '@assistant/constants';
 import type { ChatGPTAPI, SendMessageOptions } from 'chatgpt';
+
+const messageStore = new Keyv({
+  store: new KeyvFile({
+    filename: systemConstants.messageStorePath,
+  }),
+});
 
 type ClientInfo = {
   client: ChatGPTAPI;
@@ -52,6 +60,7 @@ const initClient = memoize(async () => {
     const client = new ChatGPTAPI({
       apiKey: key,
       debug: true,
+      messageStore: messageStore,
     });
 
     CLIENTS.add({
