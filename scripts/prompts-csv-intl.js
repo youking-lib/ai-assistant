@@ -16,7 +16,7 @@ async function run() {
     });
 
     prompt['act_zh'] = act_zh;
-    prompt['id'] = index;
+    prompt['id'] = index + 1;
 
     return prompt;
   });
