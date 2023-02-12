@@ -14,7 +14,7 @@ type Context = {
 };
 
 export const defaultAIChatContext: Context = {
-  prompt: PROMPTS.find(prompt => prompt.id === 1)!,
+  prompt: PROMPTS[0]!,
 };
 
 export const AIChatContext = React.createContext<Context>(defaultAIChatContext);

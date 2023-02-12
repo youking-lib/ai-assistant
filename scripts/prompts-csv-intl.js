@@ -23,6 +23,13 @@ async function run() {
 
   const res = await Promise.all(promises);
 
+  res.unshift({
+    act: 'ChatGPT',
+    act_zh: 'ChatGPT',
+    id: 0,
+    prompt: '',
+  });
+
   writeFile(outFilePath, JSON.stringify(res, null, 2));
 }
 

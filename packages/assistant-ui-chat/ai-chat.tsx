@@ -5,11 +5,10 @@ import Chat, { Bubble, useMessages, ChatProps } from '@chatui/core';
 import { postMessage } from './services';
 import { PromptModal } from './prompt';
 import { AIChatContext, defaultAIChatContext, Prompt } from './hooks';
-import { chatgptConstants } from '../constants';
 
 export function AIChat() {
   const { messages, appendMsg, setTyping } = useMessages([]);
-  const [promptModalOpen, setPromptModalOpen] = useState(false);
+  const [promptModalOpen, setPromptModalOpen] = useState(true);
   const [context, setContext] = useState(defaultAIChatContext);
   const [lastestMessageId, setLastestMessageId] = useState<string>();
 

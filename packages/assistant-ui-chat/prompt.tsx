@@ -1,9 +1,9 @@
 import { Modal, ModalProps, List, ListItem } from '@chatui/core';
-import PROMPTS from '@/scripts/prompts.json';
 import classnames from 'classnames';
 import styles from './ai-chat.module.css';
 import { Prompt, useAIChatContext } from './hooks';
 import { useEffect, useState } from 'react';
+import { promptConstants } from '../constants';
 
 export function PromptModal(
   props: ModalProps & {
@@ -46,7 +46,7 @@ export function PromptModal(
       <div className={styles.promptList}>
         {/* @ts-ignore */}
         <List>
-          {PROMPTS.map(item => {
+          {promptConstants.prompts.map(item => {
             const isActive = selectedPrompt.id === item.id;
 
             return (
