@@ -14,6 +14,9 @@ Thanks to the selfless contributions of these developers.
 - [ ] TODO: Persistent conversation
 - [ ] TODO: Supports login
 
+![](./public/WX20230212-192111.png)
+![](./public/WX20230212-192112.png)
+
 ## Getting Started
 
 If you want to experience it directly, you can visit [ai-assistant demo](https://ai.gonote.io). (If you find that it is unable to answer, it might be because the key balance is insufficient, you can raise an issue)
@@ -34,7 +37,7 @@ npm i -g pnpm pm2
 
 2. add `.env` file
 
-``` bash
+```bash
 # SITE_GOOGLE_ANALYTICS=
 OPENAI_API_KEY=
 ```
@@ -57,7 +60,7 @@ Same as `deploy with pm2`：
 
 - Clone this project.
 - Add the .env file (or .env.local for development purposes, which will not be committed).
-- Run the following script: 
+- Run the following script:
 
 ```
 pnpm i
