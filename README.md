@@ -8,6 +8,7 @@ Thanks to the selfless contributions of these developers.
 
 ## Features
 
+- Support multiple OpenAPI keys by creating multiple ChatAPI clients for load balancing
 - Supports conversation
 - Supports switching of assistant role
 - Supports PC/Mobile devices
@@ -39,7 +40,8 @@ npm i -g pnpm pm2
 
 ```bash
 # SITE_GOOGLE_ANALYTICS=
-OPENAI_API_KEY=
+# Supports multi API_KEY, split with ','
+OPENAI_API_KEY=KEY_1,KEY_2
 ```
 
 3. deploy
