@@ -12,6 +12,7 @@ Thanks to the selfless contributions of these developers.
 - Supports conversation
 - Supports switching of assistant role
 - Supports PC/Mobile devices
+- Custom OpenAI API
 - [ ] TODO: Persistent conversation
 - [ ] TODO: Supports login
 
