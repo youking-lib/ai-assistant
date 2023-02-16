@@ -100,7 +100,15 @@ export function AIChat() {
       <Chat
         navbar={{
           title: context.prompt.act_zh,
-          rightContent: [{ icon: 'apps', onClick: () => setPromptModalOpen(true) }],
+          rightContent: [
+            { icon: 'apps', onClick: () => setPromptModalOpen(true) },
+            {
+              icon: 'message',
+              onClick: () => {
+                window.open('https://github.com/youking-lib/ai-assistant');
+              },
+            },
+          ],
           leftContent: { icon: 'ellipsis-h', onClick: () => setSettingModalOpen(true) },
         }}
         messages={messages}
