@@ -15,3 +15,20 @@ export async function postMessage(
 
   return await response.json();
 }
+
+export async function postMessagePrivate(
+  apiKey: string,
+  question: string,
+  options: SendMessageOptions,
+): Promise<ChatMessage> {
+  const response = await fetch('/api/conversation-private', {
+    method: 'POST',
+    body: JSON.stringify({
+      apiKey,
+      question,
+      options,
+    }),
+  });
+
+  return await response.json();
+}

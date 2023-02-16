@@ -1,8 +1,8 @@
 // 引入组件
 import '@chatui/core/dist/index.css';
 import { useState } from 'react';
-import Chat, { Bubble, useMessages, ChatProps } from '@chatui/core';
-import { postMessage } from './services';
+import Chat, { Bubble, useMessages, ChatProps, toast } from '@chatui/core';
+import { postMessage, postMessagePrivate } from './services';
 import { PromptModal } from './prompt';
 import {
   AIChatContext,
@@ -46,6 +46,15 @@ export function AIChat() {
   };
 
   const handleSend: ChatProps['onSend'] = (type: string, val: string) => {
+    const apiKey = context.setting.apiKey;
+
+    if (!apiKey) {
+      toast.fail('请先配置 OpenAPI Key', 3000);
+
+      setSettingModalOpen(true);
+      return;
+    }
+
     if (type === 'text' && val.trim()) {
       appendMsg({
         type: 'text',
@@ -55,7 +64,7 @@ export function AIChat() {
 
       setTyping(true);
 
-      postMessage(val, {
+      postMessagePrivate(apiKey, val, {
         promptPrefix: context.prompt.prompt,
         conversationId: context.converstationId,
         parentMessageId: lastestMessageId,

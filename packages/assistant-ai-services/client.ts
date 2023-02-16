@@ -1,14 +1,7 @@
 import { memoize } from 'lodash';
-import Keyv from 'keyv';
-import KeyvFile from 'keyv-file';
-import { chatgptConstants, systemConstants } from '@assistant/constants';
+import { chatgptConstants } from '@assistant/constants';
 import type { ChatGPTAPI, SendMessageOptions } from 'chatgpt';
-
-const messageStore = new Keyv({
-  store: new KeyvFile({
-    filename: systemConstants.messageStorePath,
-  }),
-});
+import { messageStore } from './utils';
 
 type ClientInfo = {
   client: ChatGPTAPI;
