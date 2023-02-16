@@ -6,3 +6,11 @@
 .promptListItemActive {
   background-color: var(--gray-6);
 }
+
+.settingContent {
+  color: var(--gray-1);
+}
+
+.settingContent a {
+  color: var(--brand-1);
+}

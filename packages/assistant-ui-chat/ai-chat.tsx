@@ -1,16 +1,24 @@
-import '@chatui/core/dist/index.css';
 // 引入组件
+import '@chatui/core/dist/index.css';
 import { useState } from 'react';
 import Chat, { Bubble, useMessages, ChatProps } from '@chatui/core';
 import { postMessage } from './services';
 import { PromptModal } from './prompt';
-import { AIChatContext, defaultAIChatContext, Prompt } from './hooks';
+import {
+  AIChatContext,
+  AIChatContextType,
+  defaultAIChatContext,
+  Prompt,
+  storageSetSetting,
+} from './hooks';
+import { SettingModal } from './setting';
 
 export function AIChat() {
   const { messages, appendMsg, setTyping } = useMessages([]);
-  const [promptModalOpen, setPromptModalOpen] = useState(true);
   const [context, setContext] = useState(defaultAIChatContext);
   const [lastestMessageId, setLastestMessageId] = useState<string>();
+  const [promptModalOpen, setPromptModalOpen] = useState(false);
+  const [settingModalOpen, setSettingModalOpen] = useState(!Boolean(context.setting.apiKey));
 
   const setCoversationId = (id?: string) =>
     setContext({
@@ -23,6 +31,19 @@ export function AIChat() {
       ...context,
       prompt: selectedPrompt,
     });
+
+  const setSetting = (setting: Partial<AIChatContextType['setting']>) => {
+    const nextSetting = {
+      ...context.setting,
+      ...setting,
+    };
+
+    storageSetSetting(nextSetting);
+    setContext({
+      ...context,
+      setting: nextSetting,
+    });
+  };
 
   const handleSend: ChatProps['onSend'] = (type: string, val: string) => {
     if (type === 'text' && val.trim()) {
@@ -62,10 +83,16 @@ export function AIChat() {
         onClose={() => setPromptModalOpen(false)}
         onChangePrompt={setPrompt}
       />
+      <SettingModal
+        active={settingModalOpen}
+        onClose={() => setSettingModalOpen(false)}
+        onConfirm={setSetting}
+      />
       <Chat
         navbar={{
           title: context.prompt.act_zh,
           rightContent: [{ icon: 'apps', onClick: () => setPromptModalOpen(true) }],
+          leftContent: { icon: 'ellipsis-h', onClick: () => setSettingModalOpen(true) },
         }}
         messages={messages}
         renderMessageContent={renderMessageContent}

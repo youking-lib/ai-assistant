@@ -24,6 +24,7 @@ export const chatgptConstants = {
 
 export const siteConstants = {
   ga: process.env.SITE_GOOGLE_ANALYTICS,
+  settingStoragePrefix: 'ai-assisatant-storage',
 };
 
 export const systemConstants = {
