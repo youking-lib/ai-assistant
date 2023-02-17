@@ -29,17 +29,16 @@ If you want to experience it directly, you can visit [ai-assistant demo](https:/
 
 ### Deploy with pm2
 
-**[IMPORTANT] your server can access api.openai.com **
-
-```shell
-ping ai.openai.com
-curl https://api.openai.com # re 'Invalid URL (GET /)' message
-```
-
 prerequisites
 
 - nodejs
 - npm
+- ensure your server can access api.openai.com
+
+```shell
+ping ai.openai.com
+curl https://api.openai.com # re 'Invalid URL (GET /)' message means ok.
+```
 
 1. clone `ai-assistant`
 
