@@ -17,10 +17,14 @@ export async function postMessage(
 }
 
 export async function postMessagePrivate(
-  apiKey: string,
+  apiKey: string | null,
   question: string,
   options: SendMessageOptions,
 ): Promise<ChatMessage> {
+  if (!apiKey) {
+    return postMessage(question, options);
+  }
+
   const response = await fetch('/api/conversation-private', {
     method: 'POST',
     body: JSON.stringify({

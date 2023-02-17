@@ -48,13 +48,6 @@ export function AIChat() {
   const handleSend: ChatProps['onSend'] = (type: string, val: string) => {
     const apiKey = context.setting.apiKey;
 
-    if (!apiKey) {
-      toast.fail('请先配置 OpenAPI Key', 3000);
-
-      setSettingModalOpen(true);
-      return;
-    }
-
     if (type === 'text' && val.trim()) {
       appendMsg({
         type: 'text',

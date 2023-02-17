@@ -37,19 +37,23 @@ export function SettingModal(
         },
         {
           onClick: props.onClose,
-          disabled: !Boolean(defaultSetting.apiKey),
           label: '取消',
         },
       ]}
     >
       <div className={styles.settingContent}>
         <p>
-          Before you can start using DocsGPT we need you to provide an API key for llm. Currently,
-          we support only OpenAI but soon many more. You can find it{' '}
+          在你开始使用 AI Assistant 之前，我们需要你提供一个 API 密钥。目前，我们只支持
+          OpenAI，但很快就会有更多的支持。你可以通过{' '}
           <a href="https://platform.openai.com/account/api-keys" target="_blank">
-            here
-          </a>
+            链接
+          </a>{' '}
+          获得 API Key
         </p>
+
+        <br />
+
+        <p>如果您不设置，AI Assistant 会提供免费的服务，但是这可能不太稳定</p>
 
         <br />
 
