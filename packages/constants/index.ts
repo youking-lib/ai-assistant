@@ -22,8 +22,12 @@ export const chatgptConstants = {
   promptSuffix: `\n\n${ASSISTANT_LABEL_DEFAULT}:\n`,
 };
 
+if (process.env.SITE_GOOGLE_ANALYTICS) {
+  deprecated('dont use env.SITE_GOOGLE_ANALYTICS any more, instead of env.GA_TRACKING_ID');
+}
+
 export const siteConstants = {
-  ga: process.env.SITE_GOOGLE_ANALYTICS,
+  ga: process.env.GA_TRACKING_ID,
   settingStoragePrefix: 'ai-assisatant-storage',
 };
 
@@ -34,10 +38,12 @@ export const systemConstants = {
   messageStorePath: __DEV__ ? devStorePath : prodStorePath,
 };
 
-console.log(systemConstants.messageStorePath);
-
 function getApiKeys() {
   const str = process.env.OPENAI_API_KEY || '';
 
   return str.split(',');
+}
+
+function deprecated(message: string) {
+  console.warn(`[DEPRECATED] ${message}`);
 }

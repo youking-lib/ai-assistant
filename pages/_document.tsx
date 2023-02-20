@@ -1,31 +1,33 @@
-import { siteConstants, __DEV__ } from '@/packages/constants';
 import { Html, Head, Main, NextScript } from 'next/document';
-
-const SCRIPT = `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-NWXQDEPRCW');`;
+import * as gtag from '@assistant/common/gtag';
 
 export default function Document() {
-  const analytics = !__DEV__ && siteConstants.ga && (
-    <>
-      <script async src={siteConstants.ga}></script>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: SCRIPT,
-        }}
-      ></script>
-    </>
-  );
-
   return (
     <Html lang="en">
       <Head />
       <body>
         <Main />
         <NextScript />
-        {analytics}
+
+        {ga}
       </body>
     </Html>
   );
 }
+
+const ga = gtag.GA_TRACKING_ID ? (
+  <>
+    <script src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`} />
+
+    <script
+      dangerouslySetInnerHTML={{
+        __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gtag.GA_TRACKING_ID}', {
+  page_path: window.location.pathname,
+});`,
+      }}
+    />
+  </>
+) : null;
