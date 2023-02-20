@@ -1,5 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document';
 import * as gtag from '@assistant/common/gtag';
+import Script from 'next/script';
 
 export default function Document() {
   return (
@@ -17,7 +18,10 @@ export default function Document() {
 
 const ga = gtag.GA_TRACKING_ID ? (
   <>
-    <script src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`} />
+    <Script
+      strategy="afterInteractive"
+      src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+    />
 
     <script
       dangerouslySetInnerHTML={{
