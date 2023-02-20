@@ -27,8 +27,11 @@ export const siteConstants = {
   settingStoragePrefix: 'ai-assisatant-storage',
 };
 
+const devStorePath = path.resolve(__dirname, '../../message-store.json');
+const prodStorePath = path.join('/tmp', 'message-store.json');
+
 export const systemConstants = {
-  messageStorePath: path.resolve(__dirname, '../../message-store.json'),
+  messageStorePath: __DEV__ ? devStorePath : prodStorePath,
 };
 
 console.log(systemConstants.messageStorePath);
