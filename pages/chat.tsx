@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 
 import styles from './chat.module.css';
 
-const AsyncAIChat = dynamic(() => import('@/packages/assistant-ui-chat').then(def => def.AIChat), {
+const AsyncAIChat = dynamic(() => import('@/packages/ui-chat').then(def => def.AIChat), {
   ssr: false,
   loading: () => <>loading...</>,
 });

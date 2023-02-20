@@ -41,8 +41,8 @@ export function SettingModal(
         },
       ]}
     >
-      <div className={styles.settingContent}>
-        <p>
+      <div className="prose">
+        <p className="font-bold underline">
           在你开始使用 AI Assistant 之前，我们需要你提供一个 API 密钥。目前，我们只支持
           OpenAI，但很快就会有更多的支持。你可以通过{' '}
           <a href="https://platform.openai.com/account/api-keys" target="_blank">
@@ -51,14 +51,15 @@ export function SettingModal(
           获得 API Key
         </p>
 
-        <br />
+        <p className="text-xs">如果您不设置，AI Assistant 会提供免费的服务，但是这可能不太稳定</p>
 
-        <p>如果您不设置，AI Assistant 会提供免费的服务，但是这可能不太稳定</p>
-
-        <br />
-
-        <label>Open API Key</label>
-        <Input value={setting.apiKey || ''} onChange={onChangeAPIKey} placeholder="请输入..." />
+        <label className="text-xs">Open API Key</label>
+        <Input
+          value={setting.apiKey || ''}
+          type="text"
+          onChange={onChangeAPIKey}
+          placeholder="请输入..."
+        />
       </div>
     </Modal>
   );

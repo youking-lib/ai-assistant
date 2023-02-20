@@ -4,7 +4,7 @@ import Script from 'next/script';
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html lang="en" data-theme="garden">
       <Head />
       <body>
         <Main />
