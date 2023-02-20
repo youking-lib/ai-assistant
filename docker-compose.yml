@@ -1,0 +1,24 @@
+version: "3.8"
+
+networks:
+  network:
+    ipam:
+      driver: default
+      config:
+        - subnet: '177.8.0.0/16'
+
+services:
+  frontend:
+    image: ghcr.io/robin021/ai-assistant:main
+    ports:
+      - "3000:3000"
+    networks:
+        network:
+          ipv4_address: 177.8.0.10
+    env_file:
+      - ./.env
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 300
