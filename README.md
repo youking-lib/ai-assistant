@@ -85,3 +85,8 @@ pnpm run dev
 ```
 
 The server has started and is now running on localhost at port 3000.
+
+### Third Library
+
+- icon: https://lucide.dev/docs/lucide-react
+- ui: https://ui.shadcn.com/

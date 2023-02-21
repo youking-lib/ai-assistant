@@ -1,29 +1,49 @@
-export const SettingModalTrigger: React.FC<{}> = () => {
-  return (
-    <label htmlFor="my-modal" className="btn">
-      open modal
-    </label>
-  );
-};
+'use client';
 
-export const SettingModal = () => {
+import { Button } from '@assistant/components/button';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@assistant/components/dialog';
+import { Input } from '@assistant/components/input';
+import { Label } from '@assistant/components/label';
+
+export type SettingProps = React.PropsWithChildren<{}>;
+
+export function SettingDialog(props: SettingProps) {
   return (
-    <>
-      <input type="checkbox" id="my-modal" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box">
-          <h3 className="font-bold text-lg">Congratulations random Internet user!</h3>
-          <p className="py-4">
-            You've been selected for a chance to get one year of subscription to use Wikipedia for
-            free!
-          </p>
-          <div className="modal-action">
-            <label htmlFor="my-modal" className="btn">
-              Yay!
-            </label>
+    <Dialog>
+      <DialogTrigger asChild>{props.children}</DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Edit profile</DialogTitle>
+          <DialogDescription>
+            Make changes to your profile here. Click save when you're done.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="grid gap-4 py-4">
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="name" className="text-right">
+              Name
+            </Label>
+            <Input id="name" value="Pedro Duarte" className="col-span-3" />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label htmlFor="username" className="text-right">
+              Username
+            </Label>
+            <Input id="username" value="@peduarte" className="col-span-3" />
           </div>
         </div>
-      </div>
-    </>
+        <DialogFooter>
+          <Button type="submit">Save changes</Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
-};
+}
