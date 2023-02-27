@@ -17,6 +17,13 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
+      "@components/*": ["./packages/components/*"],
+      "@components": ["./packages/components"],
+      "@common/*": ["./packages/common/*"],
+      "@common": ["./packages/common"],
+      "@constants/*": ["./packages/constants/*"],
+      "@constants": ["./packages/constants"],
+      "@packages/*": ["./packages/*"],
       "@assistant/*": ["./packages/*"]
     }
   },

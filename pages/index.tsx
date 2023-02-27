@@ -3,10 +3,10 @@ import dynamic from 'next/dynamic';
 import { Layout } from '@packages/ui-site';
 import { siteConstants } from '@/packages/constants';
 
-// const AsyncAIChat = dynamic(() => import('@/packages/ui-chat').then(def => def.AIChat), {
-//   ssr: false,
-//   loading: () => <>loading...</>,
-// });
+const AsyncAIChat = dynamic(() => import('@/packages/ui-chat').then(def => def.AIChat), {
+  ssr: false,
+  loading: () => <>loading...</>,
+});
 
 export default function Home() {
   return (
@@ -19,10 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        {/* <AsyncAIChat /> */}
-        123
-      </main>
+      <AsyncAIChat />
     </Layout>
   );
 }

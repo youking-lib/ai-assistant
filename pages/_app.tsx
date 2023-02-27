@@ -1,11 +1,17 @@
-import '@/styles/globals.css';
-import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import * as gtag from '@assistant/common/gtag';
-
-// import '@assistant/assistant-ui-chat/chat.css';
-
+import { useRouter } from 'next/router';
+import { Inter as FontSans } from '@next/font/google';
+import { ThemeProvider } from 'next-themes';
 import type { AppProps } from 'next/app';
+import * as gtag from '@common/gtag';
+
+import '@/styles/globals.css';
+
+const fontSans = FontSans({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -23,5 +29,16 @@ export default function App({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <style jsx global>{`
+    :root {
+      --font-sans: ${fontSans.style.fontFamily};
+    }
+  }`}</style>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
+  );
 }

@@ -26,9 +26,22 @@ if (process.env.SITE_GOOGLE_ANALYTICS) {
   deprecated('dont use env.SITE_GOOGLE_ANALYTICS any more, instead of env.GA_TRACKING_ID');
 }
 
+const SITE_NAME = 'ai-assistant';
+
 export const siteConstants = {
   ga: process.env.GA_TRACKING_ID,
-  settingStoragePrefix: 'ai-assisatant-storage',
+  settingStoragePrefix: `${SITE_NAME}-storage`,
+  name: SITE_NAME,
+  description: 'Online AI assistant power by chatgpt, support multiple API_KEY for load balance',
+  mainNav: [
+    {
+      title: 'Home',
+      href: '/',
+    },
+  ],
+  links: {
+    github: 'https://github.com/youking-lib/ai-assistant',
+  },
 };
 
 const devStorePath = path.resolve(__dirname, '../../message-store.json');
