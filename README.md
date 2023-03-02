@@ -19,10 +19,6 @@ Thanks to the selfless contributions of these developers.
 ![](./public/WX20230212-192111.png)
 ![](./public/WX20230212-192222.png)
 
-## Wechat Group
-
-![](./public/1521676536655_.pic.jpg)
-
 ## Getting Started
 
 If you want to experience it directly, you can visit [ai-assistant demo](https://ai.gonote.io). (If you find that it is unable to answer, it might be because the key balance is insufficient, you can raise an issue)
