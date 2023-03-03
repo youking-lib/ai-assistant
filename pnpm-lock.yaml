@@ -9,7 +9,7 @@ specifiers:
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
   bing-translate-api: ^2.8.0
-  chatgpt: ^4.8.3
+  chatgpt: ^5.0.5
   classnames: ^2.3.2
   csvtojson: ^2.0.10
   eslint: 8.33.0
@@ -31,7 +31,7 @@ dependencies:
   '@types/node': 18.13.0
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
-  chatgpt: 4.8.3
+  chatgpt: 5.0.5
   classnames: 2.3.2
   eslint: 8.33.0
   eslint-config-next: 13.1.6_4vsywjlpuriuw3tl5oq6zy5a64
@@ -692,8 +692,8 @@ packages:
       supports-color: 7.2.0
     dev: false
 
-  /chatgpt/4.8.3:
-    resolution: {integrity: sha512-3kJ41a+E6aAnw4NZQgjoS8s3veu8mdaK1e0l6nX5Zr+QJre8KXygNUJJ8yPOCKBi26I3YZ1MdU+d1+QLuWrmAw==}
+  /chatgpt/5.0.5:
+    resolution: {integrity: sha512-86IlhtgHKDOvV+Hl4DLUOKZ354OH784ciI8xxbM4pmfzewQCP5VnjI0yb/nCVKAjyerFdIFHpcWdw2TVdhlcVw==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
@@ -702,7 +702,7 @@ packages:
       conf: 11.0.1
       eventsource-parser: 0.0.5
       keyv: 4.5.2
-      p-timeout: 6.1.0
+      p-timeout: 6.1.1
       quick-lru: 6.1.1
       read-pkg-up: 9.1.0
       uuid: 9.0.0
@@ -2279,8 +2279,8 @@ packages:
       p-limit: 4.0.0
     dev: false
 
-  /p-timeout/6.1.0:
-    resolution: {integrity: sha512-s0y6Le9QYGELLzNpFIt6h8B2DHTVUDLStvxtvRMSKNKeuNVVWby2dZ+pIJpW4/pWr5a3s8W85wBNtc0ZA+lzCg==}
+  /p-timeout/6.1.1:
+    resolution: {integrity: sha512-yqz2Wi4fiFRpMmK0L2pGAU49naSUaP23fFIQL2Y6YT+qDGPoFwpvgQM/wzc6F8JoenUkIlAFa4Ql7NguXBxI7w==}
     engines: {node: '>=14.16'}
     dev: false
 
