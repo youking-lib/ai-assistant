@@ -14,7 +14,6 @@ export type AIChatContextType = {
   setting: {
     apiKey: string | null;
   };
-  converstationId?: string;
 };
 
 export const defaultAIChatContext: AIChatContextType = {

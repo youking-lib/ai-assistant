@@ -20,12 +20,6 @@ export function AIChat() {
   const [promptModalOpen, setPromptModalOpen] = useState(false);
   const [settingModalOpen, setSettingModalOpen] = useState(!Boolean(context.setting.apiKey));
 
-  const setCoversationId = (id?: string) =>
-    setContext({
-      ...context,
-      converstationId: id,
-    });
-
   const setPrompt = (selectedPrompt: Prompt) =>
     setContext({
       ...context,
@@ -58,11 +52,9 @@ export function AIChat() {
       setTyping(true);
 
       postMessagePrivate(apiKey, val, {
-        promptPrefix: context.prompt.prompt,
-        conversationId: context.converstationId,
+        systemMessage: context.prompt.prompt,
         parentMessageId: lastestMessageId,
       }).then(res => {
-        setCoversationId(res.conversationId);
         setLastestMessageId(res.id);
 
         appendMsg({
