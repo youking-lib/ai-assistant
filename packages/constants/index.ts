@@ -22,12 +22,12 @@ export const chatgptConstants = {
   promptSuffix: `\n\n${ASSISTANT_LABEL_DEFAULT}:\n`,
 };
 
-if (process.env.SITE_GOOGLE_ANALYTICS) {
-  deprecated('dont use env.SITE_GOOGLE_ANALYTICS any more, instead of env.GA_TRACKING_ID');
+if (process.env.GA_TRACKING_ID) {
+  deprecated('dont use env.GA_TRACKING_ID any more, instead of env.NEXT_PUBLIC_ANALYTICS_ID');
 }
 
 export const siteConstants = {
-  ga: process.env.GA_TRACKING_ID,
+  ga: process.env.NEXT_PUBLIC_ANALYTICS_ID,
   settingStoragePrefix: 'ai-assisatant-storage',
 };
 

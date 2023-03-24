@@ -1,7 +1,9 @@
 import '@/styles/globals.css';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import Head from 'next/head';
 import * as gtag from '@assistant/common/gtag';
+import Script from 'next/script';
 
 // import '@assistant/assistant-ui-chat/chat.css';
 
@@ -23,5 +25,29 @@ export default function App({ Component, pageProps }: AppProps) {
     };
   }, [router.events]);
 
-  return <Component {...pageProps} />;
+  return (
+    <>
+      {ga && (
+        <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gtag.GA_TRACKING_ID}', {
+  page_path: window.location.pathname,
+});`,
+            }}
+          />
+        </Head>
+      )}
+      <Script
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${gtag.GA_TRACKING_ID}`}
+      />
+      <Component {...pageProps} />;
+    </>
+  );
 }
+
+const ga = gtag.GA_TRACKING_ID ? <></> : null;
